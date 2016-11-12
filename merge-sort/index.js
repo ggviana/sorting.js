@@ -1,12 +1,14 @@
-var copy = require('../util/copy')
-var first = require('../util/first')
+const copy = require('../util/copy')
+const first = require('../util/first')
 
 module.exports = function mergeSort (list) {
-  var array = copy(list)
-  var size = array.length
-  var middle = Math.floor(size / 2)
-  var left = [], right = []
-
+  let array = copy(list)
+  let left = []
+  let right = []
+  
+  const size = array.length
+  const middle = Math.floor(size / 2)
+  
   if (size <= 1) return array
 
   for (var i = 0; i < size; i++) {
@@ -24,9 +26,9 @@ module.exports = function mergeSort (list) {
 }
 
 function merge (left, right) {
-  var result = []
+  let result = []
 
-   while (left.length > 0 && right.length > 0) {
+   while (left.length && right.length) {
       if (left[0] < right[0]) {
         result.push(first(left))
       } else {
@@ -34,11 +36,11 @@ function merge (left, right) {
       }
    }
 
-   while (left.length > 0) {
+   while (left.length) {
       result.push(first(left))  
    }
 
-   while (right.length > 0) {
+   while (right.length) {
       result.push(first(right))
    }
 
